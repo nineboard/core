@@ -5,20 +5,21 @@
  * PHP version 7
  *
  * @category    Plugin
- * @package     Xpressengine\Plugin
+ *
  * @author      XE Team (developers) <developers@xpressengine.com>
  * @copyright   2020 Copyright XEHub Corp. <https://www.xehub.io>
  * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ *
  * @link        http://www.xpressengine.com
  */
+
 namespace Xpressengine\Plugin\Composer {
 
     /**
      * array_forget, copy from laravel
      *
-     * @param array        $array target array
-     * @param array|string $keys  list of item key
-     *
+     * @param  array  $array  target array
+     * @param  array|string  $keys  list of item key
      * @return void
      */
     function array_forget(&$array, $keys)
@@ -56,10 +57,9 @@ namespace Xpressengine\Plugin\Composer {
      *
      * If no key is given to the method, the entire array will be replaced.
      *
-     * @param  array  $array array
-     * @param  string $key   item key
-     * @param  mixed  $value item value
-     *
+     * @param  array  $array  array
+     * @param  string  $key  item key
+     * @param  mixed  $value  item value
      * @return array
      */
     function array_set(&$array, $key, $value)
@@ -76,7 +76,7 @@ namespace Xpressengine\Plugin\Composer {
             // If the key doesn't exist at this depth, we will just create an empty array
             // to hold the next value, allowing us to create the arrays to hold final
             // values at the correct depth. Then we'll keep digging into the array.
-            if (!isset($array[$key]) || !is_array($array[$key])) {
+            if (! isset($array[$key]) || ! is_array($array[$key])) {
                 $array[$key] = [];
             }
 
@@ -88,14 +88,12 @@ namespace Xpressengine\Plugin\Composer {
         return $array;
     }
 
-
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param  array  $array   array
-     * @param  string $key     item key
-     * @param  mixed  $default default value
-     *
+     * @param  array  $array  array
+     * @param  string  $key  item key
+     * @param  mixed  $default  default value
      * @return mixed
      */
     function array_get($array, $key, $default = null)
@@ -109,7 +107,7 @@ namespace Xpressengine\Plugin\Composer {
         }
 
         foreach (explode('.', $key) as $segment) {
-            if (!is_array($array) || !array_key_exists($segment, $array)) {
+            if (! is_array($array) || ! array_key_exists($segment, $array)) {
                 return $default;
             }
 

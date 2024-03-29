@@ -5,12 +5,14 @@
  * PHP version 7
  *
  * @category    Plugin
- * @package     Xpressengine\Plugin
+ *
  * @author      XE Team (developers) <developers@xpressengine.com>
  * @copyright   2020 Copyright XEHub Corp. <https://www.xehub.io>
  * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ *
  * @link        http://www.xpressengine.com
  */
+
 namespace Xpressengine\Plugin\Composer;
 
 use Xpressengine\Plugin\PluginScanner;
@@ -19,10 +21,11 @@ use Xpressengine\Plugin\PluginScanner;
  * plugin composer 파일을 제어하는 클래스.
  *
  * @category    Plugin
- * @package     Xpressengine\Plugin
+ *
  * @author      XE Team (developers) <developers@xpressengine.com>
  * @copyright   2020 Copyright XEHub Corp. <https://www.xehub.io>
  * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ *
  * @link        http://www.xpressengine.com
  */
 class ComposerFileWriter
@@ -30,11 +33,15 @@ class ComposerFileWriter
     /**
      * @deprecated since 3.0.1, use \Xpressengine\Foundation\Operations\Operation
      */
-    const STATUS_READY     = 'ready';
-    const STATUS_RUNNING   = 'running';
+    const STATUS_READY = 'ready';
+
+    const STATUS_RUNNING = 'running';
+
     const STATUS_SUCCESSED = 'successed';
-    const STATUS_FAILED    = 'failed';
-    const STATUS_EXPIRED   = 'expired';
+
+    const STATUS_FAILED = 'failed';
+
+    const STATUS_EXPIRED = 'expired';
 
     /**
      * @var string
@@ -67,12 +74,12 @@ class ComposerFileWriter
     /**
      * ComposerFileWriter constructor.
      *
-     * @param string        $path    path of plugin composer file
-     * @param PluginScanner $scanner plugin scanner
+     * @param  string  $path  path of plugin composer file
+     * @param  PluginScanner  $scanner  plugin scanner
      */
     public function __construct($path, PluginScanner $scanner)
     {
-        require_once(__DIR__.'/helpers.php');
+        require_once __DIR__.'/helpers.php';
         $this->scanner = $scanner;
         $this->path = $path;
         $this->load(true);
@@ -81,12 +88,12 @@ class ComposerFileWriter
     /**
      * json 파일의 내용을 메모리에 읽어온다.
      *
-     * @param bool $sync sync to original if given value is true
+     * @param  bool  $sync  sync to original if given value is true
      * @return void
      */
     public function load($sync = false)
     {
-        if (!is_file($this->path)) {
+        if (! is_file($this->path)) {
             $this->data = [];
         } else {
             $str = file_get_contents($this->path);
@@ -136,7 +143,7 @@ class ComposerFileWriter
         $data['require'] = [];
 
         $data['xpressengine-plugin'] = [
-            "operation" => [],
+            'operation' => [],
         ];
 
         $this->data = $data;
@@ -160,9 +167,10 @@ class ComposerFileWriter
             $version = array_get($plugin, 'metaData.version');
             if (is_dir($dir.DIRECTORY_SEPARATOR.$plugin['id'].DIRECTORY_SEPARATOR.'vendor')) {
                 $replace[$name] = '*';
+
                 continue;
-//            } elseif (is_link($dir.DIRECTORY_SEPARATOR.$plugin['id'])) {
-//                continue;
+                //            } elseif (is_link($dir.DIRECTORY_SEPARATOR.$plugin['id'])) {
+                //                continue;
             }
             $requires[$name] = $version;
         }
@@ -179,6 +187,7 @@ class ComposerFileWriter
      * 현재 실행중인 작업에 대한 정보를 초기화 한다.
      *
      * @return $this
+     *
      * @deprecated since 3.0.1
      */
     public function cleanOperation()
@@ -204,8 +213,7 @@ class ComposerFileWriter
     /**
      * setUpdateMode
      *
-     * @param array $fixedList the list of version fixed plugins
-     *
+     * @param  array  $fixedList  the list of version fixed plugins
      * @return void
      */
     public function setUpdateMode($fixedList = [])
@@ -225,38 +233,38 @@ class ComposerFileWriter
     /**
      * add plugin to require
      *
-     * @param string $name    package name of plugin
-     * @param string $version version of plugin
-     *
+     * @param  string  $name  package name of plugin
+     * @param  string  $version  version of plugin
      * @return $this
      */
     public function addRequire($name, $version)
     {
         array_set($this->data, "require.$name", $version);
+
         return $this;
     }
 
     /**
      * remove plugin from require
      *
-     * @param string $name package name of plugin
-     *
+     * @param  string  $name  package name of plugin
      * @return $this
      */
     public function removeRequire($name)
     {
         array_forget($this->data, "require.$name");
+
         return $this;
     }
 
     /**
      * register plugin to install list
      *
-     * @param string $name        package name of plugin
-     * @param string $version     plugin version
-     * @param string $expiredTime deadline
-     *
+     * @param  string  $name  package name of plugin
+     * @param  string  $version  plugin version
+     * @param  string  $expiredTime  deadline
      * @return $this
+     *
      * @deprecated since 3.0.1
      */
     public function install($name, $version, $expiredTime = null)
@@ -267,11 +275,11 @@ class ComposerFileWriter
     /**
      * register plugin to update list
      *
-     * @param string $name        package name of plugin
-     * @param string $version     plugin version
-     * @param string $expiredTime deadline
-     *
+     * @param  string  $name  package name of plugin
+     * @param  string  $version  plugin version
+     * @param  string  $expiredTime  deadline
      * @return $this
+     *
      * @deprecated since 3.0.1
      */
     public function update($name, $version, $expiredTime = null)
@@ -282,10 +290,10 @@ class ComposerFileWriter
     /**
      * register plugin to uninstall list
      *
-     * @param string $name        package name of plugin
-     * @param string $expiredTime deadline (deprecated since 3.0.1)
-     *
+     * @param  string  $name  package name of plugin
+     * @param  string  $expiredTime  deadline (deprecated since 3.0.1)
      * @return $this
+     *
      * @eprecated since 3.0.1
      */
     public function uninstall($name, $expiredTime = null)
@@ -296,7 +304,7 @@ class ComposerFileWriter
     /**
      * save loaded data to plugin composer file
      *
-     * @param bool $sync sync to original if given value is true
+     * @param  bool  $sync  sync to original if given value is true
      * @return void
      */
     public function write($sync = false)
@@ -317,9 +325,8 @@ class ComposerFileWriter
     /**
      * retrieve data
      *
-     * @param string $key     data field key
-     * @param mixed  $default default data
-     *
+     * @param  string  $key  data field key
+     * @param  mixed  $default  default data
      * @return mixed
      */
     public function get($key, $default = null)
@@ -330,9 +337,8 @@ class ComposerFileWriter
     /**
      * set data
      *
-     * @param string $key   data field key
-     * @param mixed  $value data value
-     *
+     * @param  string  $key  data field key
+     * @param  mixed  $value  data value
      * @return void
      */
     public function set($key, $value)

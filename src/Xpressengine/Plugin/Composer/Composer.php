@@ -5,12 +5,14 @@
  * PHP version 7
  *
  * @category    Plugin
- * @package     Xpressengine\Plugin
+ *
  * @author      XE Team (developers) <developers@xpressengine.com>
  * @copyright   2020 Copyright XEHub Corp. <https://www.xehub.io>
  * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ *
  * @link        http://www.xpressengine.com
  */
+
 namespace Xpressengine\Plugin\Composer;
 
 use Composer\Installer\InstallerEvent;
@@ -23,10 +25,11 @@ use Xpressengine\Plugin\PluginScanner;
 
 /**
  * @category    Plugin
- * @package     Xpressengine\Plugin
+ *
  * @author      XE Team (developers) <developers@xpressengine.com>
  * @copyright   2020 Copyright XEHub Corp. <https://www.xehub.io>
  * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ *
  * @link        http://www.xpressengine.com
  */
 class Composer
@@ -52,14 +55,13 @@ class Composer
         'xpressengine-plugin/news_client' => '*',
         'xpressengine-plugin/page' => '*',
         'xpressengine-plugin/together' => '*',
-        'xpressengine-plugin/widget_page' => '*'
+        'xpressengine-plugin/widget_page' => '*',
     ];
 
     /**
      * set target packagist url
      *
-     * @param string $packagistUrl target packagist url
-     *
+     * @param  string  $packagistUrl  target packagist url
      * @return void
      */
     public static function setPackagistUrl($packagistUrl)
@@ -70,8 +72,7 @@ class Composer
     /**
      * set packagist auth token
      *
-     * @param string $authToken auth token(site token)
-     *
+     * @param  string  $authToken  auth token(site token)
      * @return void
      */
     public static function setPackagistToken($authToken)
@@ -82,17 +83,16 @@ class Composer
     /**
      * composer가 실행될 때 호출된다. composer.plugins.json 파일이 있는지 조사하고, 생성한다.
      *
-     * @param CommandEvent $event composer가 제공하는 event
-     *
+     * @param  CommandEvent  $event  composer가 제공하는 event
      * @return void
      */
     public static function command(CommandEvent $event)
     {
-        if (!in_array($event->getCommandName(), ['update', 'install'])) {
+        if (! in_array($event->getCommandName(), ['update', 'install'])) {
             return;
         }
 
-        if (!file_exists(static::$pluginComposerFile)) {
+        if (! file_exists(static::$pluginComposerFile)) {
             $writer = static::getWriter();
             foreach (static::$basePlugins as $name => $version) {
                 $writer->addRequire($name, $version);
@@ -108,8 +108,7 @@ class Composer
     /**
      * preUpdateOrInstall
      *
-     * @param Event $event event object
-     *
+     * @param  Event  $event  event object
      * @return void
      */
     public static function preUpdateOrInstall(Event $event)
@@ -119,8 +118,7 @@ class Composer
     /**
      * postDependenciesSolving
      *
-     * @param InstallerEvent $event event object
-     *
+     * @param  InstallerEvent  $event  event object
      * @return void
      */
     public static function postDependenciesSolving(InstallerEvent $event)
@@ -133,7 +131,7 @@ class Composer
     /**
      * Handle the post-install Composer event.
      *
-     * @param Event $event composer event object
+     * @param  Event  $event  composer event object
      * @return void
      */
     public static function postInstall(Event $event)
@@ -144,7 +142,7 @@ class Composer
     /**
      * Handle the post-update Composer event.
      *
-     * @param Event $event composer event object
+     * @param  Event  $event  composer event object
      * @return void
      */
     public static function postUpdate(Event $event)
@@ -155,7 +153,7 @@ class Composer
     /**
      * Handle the post-update or post-install Composer event.
      *
-     * @param Event $event composer event object
+     * @param  Event  $event  composer event object
      * @return void
      */
     public static function postUpdateOrInstall(Event $event)
@@ -178,7 +176,7 @@ class Composer
     /**
      * Handle the post-autoload-dump Composer event.
      *
-     * @param Event $event composer event object
+     * @param  Event  $event  composer event object
      * @return void
      */
     public static function postAutoloadDump(Event $event)
@@ -226,7 +224,7 @@ class Composer
      */
     protected static function getWriter()
     {
-        if (!static::$writer) {
+        if (! static::$writer) {
             $reader = new MetaFileReader(static::$composerFile);
             $scanner = new PluginScanner($reader, static::$pluginsDir, '');
             static::$writer = new ComposerFileWriter(static::$pluginComposerFile, $scanner);
@@ -238,9 +236,8 @@ class Composer
     /**
      * delete Directory
      *
-     * @param string $directory directory
-     * @param bool   $preserve  preserve
-     *
+     * @param  string  $directory  directory
+     * @param  bool  $preserve  preserve
      * @return bool
      *
      * @deprecated since 3.0.1
