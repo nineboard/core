@@ -19,6 +19,7 @@ use Closure;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Xpressengine\Permission\Instance;
 use Xpressengine\Support\Exceptions\AccessDeniedHttpException;
 use Xpressengine\Support\IpMatch;
@@ -82,7 +83,7 @@ class SettingsMiddleware
         // apply theme
         $this->applySettingsTheme();
 
-        if (! empty($errors = $this->app['xe.plugin']->getErrors())) {
+        if (! empty($errors = app()['xe.plugin']->getErrors())) {
             $request->session()->flash('bootfail', $errors);
         }
 
@@ -116,7 +117,7 @@ class SettingsMiddleware
             return;
         }
 
-        $permissionId = array_get($route->getAction(), 'permission');
+        $permissionId = Arr::get($route->getAction(), 'permission');
 
         if ($permissionId === null) {
             throw new AccessDeniedHttpException();
@@ -135,7 +136,7 @@ class SettingsMiddleware
      */
     protected function checkTrustClient(Request $request)
     {
-        $trusts = $this->app['config']['xe.settings.trusts'];
+        $trusts = app()['config']['xe.settings.trusts'];
 
         if (! $this->match($request->ip(), $trusts)) {
             throw new AccessDeniedHttpException();
@@ -149,10 +150,10 @@ class SettingsMiddleware
      */
     protected function applySettingsTheme()
     {
-        $config = $this->app['config'];
+        $config = app()['config'];
 
         /** @var ThemeHandler $themeHandler */
-        $themeHandler = $this->app['xe.theme'];
+        $themeHandler = app()['xe.theme'];
 
         $theme = $config->get('xe.settings.theme');
 

@@ -17,6 +17,7 @@ namespace Xpressengine\Interception\Proxy\Loader;
 
 use Xpressengine\Interception\Proxy\Definition;
 use Xpressengine\Interception\Proxy\ProxyConfig;
+use Xpressengine\Log\Models\Log;
 
 /**
  * 이 클래스는 동적으로 생성된 프록시 클래스를 파일로 생성후 로딩한다.
@@ -102,7 +103,7 @@ class FileLoader implements Loader
             return true;
         }
 
-        \Log::debug('proxy is expired > '.$proxyPath);
+        Log::debug('proxy is expired > '.$proxyPath);
 
         return false;
     }

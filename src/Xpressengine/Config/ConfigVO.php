@@ -50,10 +50,8 @@ class ConfigVO extends Fluent
 
     /**
      * for "json_encode"
-     *
-     * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->scalar();
     }

@@ -16,6 +16,7 @@
 namespace Xpressengine\MediaLibrary\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Xpressengine\Media\Models\Media;
 use Xpressengine\MediaLibrary\MediaLibraryHandler;
 use Xpressengine\Support\EloquentRepositoryTrait;
@@ -318,7 +319,7 @@ class MediaLibraryFileRepository
      */
     public function delete(Model $mediaLibraryFileItem)
     {
-        \XeDB::beginTransaction();
+        DB::beginTransaction();
 
         try {
             $file = $mediaLibraryFileItem->file;
@@ -330,11 +331,11 @@ class MediaLibraryFileRepository
 
             $this->traitDelete($mediaLibraryFileItem);
         } catch (\Exception $e) {
-            \XeDB::rollback();
+            DB::rollback();
 
             throw $e;
         }
 
-        \XeDB::commit();
+        DB::commit();
     }
 }

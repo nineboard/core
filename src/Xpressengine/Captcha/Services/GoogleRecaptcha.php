@@ -70,7 +70,7 @@ class GoogleRecaptcha implements CaptchaInterface
     protected $frontend;
 
     /**
-     * ReCaptcha response instnace
+     * ReCaptcha response instance
      *
      * @var Response
      */

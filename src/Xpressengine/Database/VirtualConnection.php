@@ -164,6 +164,20 @@ class VirtualConnection implements VirtualConnectionInterface
     }
 
     /**
+     * Run a select statement and return the first column of the first row.
+     *
+     * @param  string  $query
+     * @param  array  $bindings
+     * @param  bool  $useReadPdo
+     *
+     * @throws \Illuminate\Database\MultipleColumnsSelectedException
+     */
+    public function scalar($query, $bindings = [], $useReadPdo = true): mixed
+    {
+        return $this->connection->scalar($query, $bindings, $useReadPdo);
+    }
+
+    /**
      * Run a select statement against the database.
      *
      * @param  string  $query  query

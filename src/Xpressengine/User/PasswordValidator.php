@@ -308,7 +308,7 @@ class PasswordValidator
      */
     public function getRule($level)
     {
-        return $this->app['xe.config']->getVal('user.register.password_rules');
+        return app()['xe.config']->getVal('user.register.password_rules');
     }
 
     /**
@@ -320,7 +320,7 @@ class PasswordValidator
      */
     public function getDefaultLevel()
     {
-        return $this->app['config']['xe.user.password.default'];
+        return app()['config']['xe.user.password.default'];
     }
 
     /**
@@ -332,6 +332,6 @@ class PasswordValidator
      */
     protected function trans($key, $param = [])
     {
-        return $this->app['xe.translator']->trans($key, $param);
+        return app()['xe.translator']->trans($key, $param);
     }
 }

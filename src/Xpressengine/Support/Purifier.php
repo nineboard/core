@@ -61,9 +61,9 @@ class Purifier
         $this->config->autoFinalize = false;
 
         $this->config->loadArray(array_merge(
-            $this->app['config']['purifier.settings.default'],
+            app()['config']['purifier.settings.default'],
             [
-                'Cache.SerializerPath' => $this->app['config']['purifier.cachePath'],
+                'Cache.SerializerPath' => app()['config']['purifier.cachePath'],
             ]
         ));
     }
@@ -198,7 +198,7 @@ class Purifier
      */
     public function purify($content)
     {
-        $isAdmin = optional($this->app['request']->user())->isAdmin() ?? false;
+        $isAdmin = optional(app()['request']->user())->isAdmin() ?? false;
 
         if ($isAdmin === true) {
             $this->config->set('HTML.Nofollow', true);

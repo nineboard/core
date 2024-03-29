@@ -56,6 +56,8 @@ class AdvisorCollection
      */
     protected $sorted = [];
 
+    protected Sorter $sorter;
+
     /**
      * 생성자.
      *

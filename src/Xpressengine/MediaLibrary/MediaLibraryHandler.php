@@ -19,8 +19,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use XeDB;
 use XeMedia;
 use XeStorage;
 use Xpressengine\Http\Request;
@@ -77,7 +78,7 @@ class MediaLibraryHandler
      */
     public function createFolder(Request $request)
     {
-        XeDB::beginTransaction();
+        DB::beginTransaction();
 
         try {
             $parentFolderItem = $this->getFolderItem($request->get('parent_id', ''));
@@ -91,12 +92,12 @@ class MediaLibraryHandler
             $this->linkHierarchy($folderItem, $parentFolderItem);
             $this->setOrder($folderItem);
         } catch (\Exception $e) {
-            XeDB::rollback();
+            DB::rollback();
 
             throw $e;
         }
 
-        XeDB::commit();
+        DB::commit();
 
         return $folderItem;
     }
@@ -110,7 +111,7 @@ class MediaLibraryHandler
      */
     public function moveFolder(Request $request, $folderId)
     {
-        XeDB::beginTransaction();
+        DB::beginTransaction();
 
         try {
             $folderItem = $this->getFolderItem($folderId);
@@ -129,12 +130,12 @@ class MediaLibraryHandler
 
             $this->folders->update($folderItem, [$folderItem->getParentIdName() => $newParentFolderItem->id]);
         } catch (\Exception $e) {
-            XeDB::rollback();
+            DB::rollback();
 
             throw $e;
         }
 
-        XeDB::commit();
+        DB::commit();
 
         return $newParentFolderItem;
     }
@@ -204,7 +205,7 @@ class MediaLibraryHandler
      */
     protected function dropFolder($folderId)
     {
-        XeDB::beginTransaction();
+        DB::beginTransaction();
 
         try {
             $folderItem = $this->getFolderItem($folderId);
@@ -229,12 +230,12 @@ class MediaLibraryHandler
 
             $this->folders->delete($folderItem);
         } catch (\Exception $e) {
-            XeDB::rollback();
+            DB::rollback();
 
             throw $e;
         }
 
-        XeDB::commit();
+        DB::commit();
     }
 
     public function getInstanceFolderItem($instanceId)
@@ -557,7 +558,7 @@ class MediaLibraryHandler
     public function uploadMediaLibraryFile(Request $request)
     {
         $uploadFile = $request->file('file');
-        $user = \Auth::user();
+        $user = Auth::user();
         $mediaLibraryFileItem = $this->storeMediaLibraryFile($uploadFile, $request->only('instance_id', 'folder_id'), $user);
 
         return $mediaLibraryFileItem;
@@ -578,17 +579,17 @@ class MediaLibraryHandler
         }
 
         foreach ($fileIds as $fileId) {
-            XeDB::beginTransaction();
+            DB::beginTransaction();
             try {
                 $fileItem = $this->getMediaLibraryFileItem($fileId);
 
                 $this->files->update($fileItem, ['folder_id' => $targetFolder->id]);
             } catch (\Exception $e) {
-                XeDB::rollback();
+                DB::rollback();
 
                 throw $e;
             }
-            XeDB::commit();
+            DB::commit();
         }
     }
 

@@ -18,6 +18,7 @@ namespace Xpressengine\Interception;
 use Xpressengine\Interception\Proxy\Loader\Loader;
 use Xpressengine\Interception\Proxy\Pass\Pass;
 use Xpressengine\Interception\Proxy\ProxyGenerator;
+use Xpressengine\Log\Models\Log;
 
 /**
  * 이 라이브러리는 AOP(aspect-oriented programming)을 구현한 라이브러리이며 이 클래스는 프로그램 내에서
@@ -218,7 +219,7 @@ class InterceptionHandler
             $proxyClass = $this->proxyGenerator->generate($targetClass);
         } catch (\Exception $e) {
             try {
-                \Log::info('--->> intercept proxy exception auto fixed.');
+                Log::info('--->> intercept proxy exception auto fixed.');
                 $this->clearProxies();
                 $proxyClass = $this->proxyGenerator->generate($targetClass);
             } catch (\Exception $e) {

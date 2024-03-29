@@ -394,13 +394,14 @@ class DynamicQuery extends Builder
     /**
      * Paginate the given query into a simple paginator.
      *
-     * @param  int  $perPage  count of list
-     * @param  array  $columns  get columns
-     * @param  string  $pageName  page parameter name
-     * @param  int|null  $page  page number
+     * @param  int|\Closure  $perPage
+     * @param  array|string  $columns
+     * @param  string  $pageName
+     * @param  int|null  $page
+     * @param  \Closure|int|null  $total
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
+    public function paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null, $total = null)
     {
         if ($this->dynamic === false) {
             parent::paginate($perPage, $columns);

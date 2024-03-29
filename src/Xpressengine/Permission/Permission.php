@@ -129,9 +129,8 @@ class Permission extends Entity implements IteratorAggregate
      *
      * @param  mixed  $offset  array offset
      * @param  mixed  $value  array value
-     * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         // nothing to do
     }
@@ -140,9 +139,8 @@ class Permission extends Entity implements IteratorAggregate
      * Unset the item at a given offset.
      *
      * @param  string  $offset  array offset
-     * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         // nothing to do
     }
@@ -151,9 +149,8 @@ class Permission extends Entity implements IteratorAggregate
      * Determine if an item exists at an offset.
      *
      * @param  mixed  $offset  array offset
-     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->grant->{$offset});
     }
@@ -172,10 +169,8 @@ class Permission extends Entity implements IteratorAggregate
 
     /**
      * Get an iterator for the items.
-     *
-     * @return ArrayIterator
      */
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->grant->getAttributes());
     }

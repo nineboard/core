@@ -44,8 +44,8 @@ class CaptchaManager extends Manager
         return new GoogleRecaptcha(
             $config['siteKey'],
             $config['secret'],
-            $this->app['request'],
-            $this->app['xe.frontend']
+            app()['request'],
+            app()['xe.frontend']
         );
     }
 
@@ -61,9 +61,9 @@ class CaptchaManager extends Manager
         return new NaverCaptcha(
             $config['clientId'],
             $config['secret'],
-            $this->app['request'],
-            $this->app['xe.frontend'],
-            $this->app['view'],
+            app()['request'],
+            app()['xe.frontend'],
+            app()['view'],
             isset($config['timeout']) ? $config['timeout'] : 0
         );
     }
@@ -76,7 +76,7 @@ class CaptchaManager extends Manager
      */
     protected function getConfig($driver)
     {
-        $apis = $this->app['config']['captcha.apis'];
+        $apis = app()['config']['captcha.apis'];
 
         return $apis[$driver];
     }
@@ -88,7 +88,7 @@ class CaptchaManager extends Manager
      */
     public function getDefaultDriver()
     {
-        return $this->app['config']['captcha.driver'];
+        return app()['config']['captcha.driver'];
     }
 
     /**
@@ -99,6 +99,6 @@ class CaptchaManager extends Manager
      */
     public function setDefaultDriver($name)
     {
-        $this->app['config']['captcha.driver'] = $name;
+        app()['config']['captcha.driver'] = $name;
     }
 }

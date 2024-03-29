@@ -15,6 +15,7 @@
 
 namespace Xpressengine\Media\Handlers;
 
+use getID3;
 use Xpressengine\Media\Exceptions\NotAvailableException;
 use Xpressengine\Media\Models\Audio;
 use Xpressengine\Media\Models\Media;
@@ -57,7 +58,7 @@ class AudioHandler extends AbstractHandler
      * @param  \getID3  $reader  Media reader instance
      * @param  TempFileCreator  $temp  TempFileCreator instance
      */
-    public function __construct(AudioRepository $repo, \getID3 $reader, TempFileCreator $temp)
+    public function __construct(AudioRepository $repo, getID3 $reader, TempFileCreator $temp)
     {
         parent::__construct($repo);
 

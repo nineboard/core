@@ -20,6 +20,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Xpressengine\Config\ConfigManager;
 use Xpressengine\Plugin\Exceptions\CannotDeleteActivatedPluginException;
@@ -180,7 +181,7 @@ class PluginHandler
      */
     public function getPluginsDir()
     {
-        return $this->app['path.plugins'];
+        return app()['path.plugins'];
     }
 
     /**
@@ -190,7 +191,7 @@ class PluginHandler
      */
     public function getPrivatesDir()
     {
-        return $this->app['path.privates'];
+        return app()['path.privates'];
     }
 
     /**
@@ -217,7 +218,7 @@ class PluginHandler
         $unresolved = $this->register->getUnresolvedComponents();
 
         if ($plugin) {
-            return array_get($unresolved, $plugin, []);
+            return Arr::get($unresolved, $plugin, []);
         }
 
         return $unresolved;
@@ -500,7 +501,7 @@ class PluginHandler
      */
     protected function handleError(PluginEntity $entity, \Exception $e)
     {
-        if ($this->app['config']['app.debug'] === true) {
+        if (app()['config']['app.debug'] === true) {
             throw $e;
         }
 
@@ -509,7 +510,7 @@ class PluginHandler
             'exception' => $e,
         ];
 
-        if ($entity->isActivated() && $this->app['config']['xe.plugin.sensitive'] == true) {
+        if ($entity->isActivated() && app()['config']['xe.plugin.sensitive'] == true) {
             $this->deactivatePlugin($entity->getId());
         }
     }
@@ -1009,6 +1010,6 @@ class PluginHandler
      */
     protected function getFilesystem()
     {
-        return $this->app['files'];
+        return app()['files'];
     }
 }

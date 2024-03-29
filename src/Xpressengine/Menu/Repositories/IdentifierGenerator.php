@@ -30,6 +30,8 @@ use Xpressengine\Keygen\Keygen;
  */
 class IdentifierGenerator
 {
+    public Keygen $keygen;
+
     /**
      * IdentifierGenerator constructor.
      *

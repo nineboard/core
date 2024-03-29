@@ -64,6 +64,8 @@ class ConfigManager
      */
     protected $maxNameLength = 255;
 
+    protected ?string $site_key;
+
     /**
      * constructor
      *
