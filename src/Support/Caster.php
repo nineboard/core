@@ -84,7 +84,7 @@ class Caster
     {
         $c = ! preg_match('/[^0-9]/', $v) ? (int) $v : null;
 
-        if ($c != null && (string) $v === (string) $c) {
+        if (! is_null($c) && (string) $v === (string) $c) {
             return $c;
         }
     }
