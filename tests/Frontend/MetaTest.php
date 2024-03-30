@@ -18,7 +18,7 @@ class MetaTest extends \PHPUnit\Framework\TestCase
      */
     protected $meta;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();
@@ -130,7 +130,7 @@ class MetaTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         Meta::init();
         $this->meta = new Meta();

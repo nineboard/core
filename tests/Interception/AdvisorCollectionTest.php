@@ -19,13 +19,13 @@ class AdvisorCollectionTest extends \PHPUnit\Framework\TestCase
      */
     protected $advisorCollection = null;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
 
         $this->advisorCollection = new AdvisorCollection();

@@ -1,13 +1,13 @@
 <?php
 
-namespace Xpressengine\Tests\Frontend;
+namespace Xpressengine\Tests\Editor;
 
 use Mockery as m;
 use Xpressengine\Editor\Textarea;
 
 class AbstractEditorTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

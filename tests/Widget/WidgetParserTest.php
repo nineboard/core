@@ -158,10 +158,8 @@ class WidgetParserTest extends TestCase
 
     /**
      * setUp
-     *
-     * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $handler = m::mock('Xpressengine\Widget\WidgetHandler');
 

@@ -25,13 +25,13 @@ class ProxyTest /*extends \PHPUnit\Framework\TestCase*/
      */
     private $targetObject = null;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->interceptor = InterceptionHandler::singleton(null, true);
 

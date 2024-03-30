@@ -18,7 +18,7 @@ class JSFileTest extends \PHPUnit\Framework\TestCase
      */
     protected $jsFile;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         $prop = new \ReflectionProperty(JSFile::class, 'sorted');
@@ -167,7 +167,7 @@ class JSFileTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('<script src="path/to/file1.js" type="javascript/abc"></script>', trim($output));
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         JSFileStub::init();
         $this->jsFile = new JSFileStub([

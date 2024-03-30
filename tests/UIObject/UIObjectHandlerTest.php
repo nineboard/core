@@ -13,7 +13,7 @@ use Xpressengine\UIObject\UIObjectHandler;
 
 class UIObjectHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();

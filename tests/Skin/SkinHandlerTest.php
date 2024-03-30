@@ -21,7 +21,7 @@ class SkinHandlerTest extends \PHPUnit\Framework\TestCase
      */
     protected $handler;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();
@@ -175,7 +175,7 @@ class SkinHandlerTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals("a{$d}c", $this->handler->mergeKey(['a', null], 'c'));
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->handler = new SkinHandler($this->getContainer(), $this->getStore(), [], []);
         parent::setUp();

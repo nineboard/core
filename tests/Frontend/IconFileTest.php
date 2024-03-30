@@ -18,7 +18,7 @@ class IconFileTest extends \PHPUnit\Framework\TestCase
      */
     protected $iconFile;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();
@@ -58,7 +58,7 @@ class IconFileTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('<link rel="shortcut icon" type="image/png" href="path/to/file.ico">', trim($output));
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         IconFile::init();
         $this->iconFile = new IconFileStub('path/to/file.ico');

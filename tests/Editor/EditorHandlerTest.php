@@ -1,13 +1,13 @@
 <?php
 
-namespace Xpressengine\Tests\Frontend;
+namespace Xpressengine\Tests\Editor;
 
 use Mockery as m;
 use Xpressengine\Editor\EditorHandler;
 
 class EditorHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

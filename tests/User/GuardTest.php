@@ -17,7 +17,7 @@ use Xpressengine\User\Models\Guest;
 
 class GuardTest extends \PHPUnit\Framework\TestCase
 {
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();

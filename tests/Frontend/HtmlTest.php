@@ -18,7 +18,7 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
      */
     protected $html;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();
@@ -104,7 +104,7 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
 <span>3</span>', trim($output));
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         Html::init();
         $this->html = new Html();

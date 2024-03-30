@@ -116,10 +116,8 @@ class RouteCollectionTest extends TestCase
 
     /**
      * setUp
-     *
-     * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         /**
          * @var Route $route

@@ -15,7 +15,7 @@ use Xpressengine\User\Repositories\UserAccountRepository;
 
 class UserAccountRepositoryTest extends \PHPUnit\Framework\TestCase
 {
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();

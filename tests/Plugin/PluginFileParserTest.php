@@ -18,13 +18,13 @@ class PluginFileParserTest /*extends \PHPUnit\Framework\TestCase*/
      */
     protected $parser;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->parser = new PluginFileParser();
 

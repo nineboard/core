@@ -20,7 +20,7 @@ namespace Xpressengine\Tests\Theme;
 
 class AbstractThemeTest extends \PHPUnit\Framework\TestCase
 {
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();

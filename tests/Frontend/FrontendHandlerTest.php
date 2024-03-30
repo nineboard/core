@@ -20,7 +20,7 @@ namespace Xpressengine\Tests\Frontend {
 
     class FrontendHandlerTest extends TestCase
     {
-        protected function tearDown()
+        protected function tearDown(): void
         {
             \Mockery::close();
             parent::tearDown();
@@ -95,7 +95,7 @@ namespace Xpressengine\Tests\Frontend {
             $output = $frontend->output('js', 'body.prepend');
         }
 
-        protected function setUp()
+        protected function setUp(): void
         {
 
             parent::setUp();

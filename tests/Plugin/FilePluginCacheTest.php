@@ -27,7 +27,7 @@ use Xpressengine\Plugin\Cache\FilePluginCache;
 
 class FilePluginCacheTest extends \PHPUnit\Framework\TestCase
 {
-    protected function tearDown()
+    protected function tearDown(): void
     {
         Mockery::close();
         parent::tearDown();

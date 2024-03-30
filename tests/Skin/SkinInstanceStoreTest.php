@@ -20,7 +20,7 @@ class SkinInstanceStoreTest extends \PHPUnit\Framework\TestCase
      */
     protected $store;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();
@@ -88,7 +88,7 @@ class SkinInstanceStoreTest extends \PHPUnit\Framework\TestCase
         $this->store->setConfigs($key, 'desktopSkin', []);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->store = new Store($this->getConfigManager());
         parent::setUp();

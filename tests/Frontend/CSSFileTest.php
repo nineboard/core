@@ -18,7 +18,7 @@ class CSSFileTest extends \PHPUnit\Framework\TestCase
      */
     protected $cssFile;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         \Mockery::close();
         $prop = new \ReflectionProperty(CSSFile::class, 'sorted');
@@ -133,7 +133,7 @@ class CSSFileTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('<link href="path/to/file1.css" type="text/abc" rel="stylesheet" media="all">', trim($output));
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         CSSFileStub::init();
         $this->cssFile = new CSSFileStub([

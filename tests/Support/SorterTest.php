@@ -231,7 +231,7 @@ class SorterTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->sorter = new SorterStub();
         parent::setUp();

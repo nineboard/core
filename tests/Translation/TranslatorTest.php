@@ -17,13 +17,13 @@ class TranslatorTest extends TranslationTestCase
 {
     private $t = null;
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         m::close();
         $this->t = null;
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->t = $this->createTranslator(
             [
