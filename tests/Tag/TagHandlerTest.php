@@ -100,7 +100,7 @@ class TagHandlerTest extends \PHPUnit\Framework\TestCase
         [$repo, $decomposer] = $this->getMocks();
 
         $instance = $this->getMockBuilder(TagHandler::class)
-            ->setMethods(['createModel'])
+            ->onlyMethods(['createModel'])
             ->setConstructorArgs([$repo, $decomposer])
             ->getMock();
 

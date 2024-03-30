@@ -134,6 +134,8 @@ class CounterTest extends TestCase
      */
     public function testAdd()
     {
+        $this->expectNotToPerformAssertions();
+
         $counter = $this->getCounter('test');
 
         $counterLogModel = $this->getCounterLogModel();
@@ -302,6 +304,8 @@ class CounterTest extends TestCase
      */
     public function testRemove()
     {
+        $this->expectNotToPerformAssertions();
+
         $counterName = 'test';
         $counter = $this->getCounter($counterName);
         $targetId = 'targetId';

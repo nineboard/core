@@ -21,6 +21,8 @@ class ContainerTest extends \PHPUnit\Framework\TestCase
 
     public function testConstruct()
     {
+        $this->expectNotToPerformAssertions();
+
         $container = new Container('\Illuminate\Support\Arr');
     }
 

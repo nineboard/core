@@ -48,6 +48,8 @@ class ImageHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testCreateThumbnails()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo, $storage] = $this->getMocks();
         $instance = m::mock(ImageHandler::class, [$repo, $storage])
             ->shouldAllowMockingProtectedMethods()
@@ -114,6 +116,8 @@ class ImageHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testMake()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo, $storage] = $this->getMocks();
         $instance = m::mock(ImageHandler::class, [$repo, $storage])
             ->shouldAllowMockingProtectedMethods()
@@ -134,6 +138,8 @@ class ImageHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testSetMetaData()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo, $storage] = $this->getMocks();
         $instance = m::mock(ImageHandler::class, [$repo, $storage])
             ->shouldAllowMockingProtectedMethods()

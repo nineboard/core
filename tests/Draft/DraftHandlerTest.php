@@ -56,6 +56,8 @@ class DraftHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testSet()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo, $auth] = $this->getMocks();
         $instance = new DraftHandler($repo, $auth);
 
@@ -110,6 +112,8 @@ class DraftHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testRemove()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo, $auth] = $this->getMocks();
         $instance = new DraftHandler($repo, $auth);
 

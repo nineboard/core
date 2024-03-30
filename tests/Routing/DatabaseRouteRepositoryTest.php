@@ -18,7 +18,7 @@ class DatabaseRouteRepositoryTest extends \PHPUnit\Framework\TestCase
     {
         [$configs, $model] = $this->getMocks();
         $instance = $this->getMockBuilder(DatabaseRouteRepository::class)
-            ->setMethods(['createModel'])
+            ->onlyMethods(['createModel'])
             ->setConstructorArgs([$configs, $model])
             ->getMock();
 
@@ -37,7 +37,7 @@ class DatabaseRouteRepositoryTest extends \PHPUnit\Framework\TestCase
     {
         [$configs, $model] = $this->getMocks();
         $instance = $this->getMockBuilder(DatabaseRouteRepository::class)
-            ->setMethods(['createModel'])
+            ->onlyMethods(['createModel'])
             ->setConstructorArgs([$configs, $model])
             ->getMock();
 
@@ -58,7 +58,7 @@ class DatabaseRouteRepositoryTest extends \PHPUnit\Framework\TestCase
     {
         [$configs, $model] = $this->getMocks();
         $instance = $this->getMockBuilder(DatabaseRouteRepository::class)
-            ->setMethods(['createModel'])
+            ->onlyMethods(['createModel'])
             ->setConstructorArgs([$configs, $model])
             ->getMock();
 
@@ -78,7 +78,7 @@ class DatabaseRouteRepositoryTest extends \PHPUnit\Framework\TestCase
     {
         [$configs, $model] = $this->getMocks();
         $instance = $this->getMockBuilder(DatabaseRouteRepository::class)
-            ->setMethods(['createModel'])
+            ->onlyMethods(['createModel'])
             ->setConstructorArgs([$configs, $model])
             ->getMock();
 
@@ -98,7 +98,7 @@ class DatabaseRouteRepositoryTest extends \PHPUnit\Framework\TestCase
     {
         [$configs, $model] = $this->getMocks();
         $instance = $this->getMockBuilder(DatabaseRouteRepository::class)
-            ->setMethods(['createModel'])
+            ->onlyMethods(['createModel'])
             ->setConstructorArgs([$configs, $model])
             ->getMock();
 
@@ -118,7 +118,7 @@ class DatabaseRouteRepositoryTest extends \PHPUnit\Framework\TestCase
     {
         [$configs, $model] = $this->getMocks();
         $instance = $this->getMockBuilder(DatabaseRouteRepository::class)
-            ->setMethods(['validateUrl'])
+            ->onlyMethods(['validateUrl'])
             ->setConstructorArgs([$configs, $model])
             ->getMock();
 
@@ -138,7 +138,7 @@ class DatabaseRouteRepositoryTest extends \PHPUnit\Framework\TestCase
     {
         [$configs, $model] = $this->getMocks();
         $instance = $this->getMockBuilder(DatabaseRouteRepository::class)
-            ->setMethods(['validateUrl'])
+            ->onlyMethods(['validateUrl'])
             ->setConstructorArgs([$configs, $model])
             ->getMock();
 
@@ -163,7 +163,7 @@ class DatabaseRouteRepositoryTest extends \PHPUnit\Framework\TestCase
     {
         [$configs, $model] = $this->getMocks();
         $instance = $this->getMockBuilder(DatabaseRouteRepository::class)
-            ->setMethods(['findByUrlAndSiteKey'])
+            ->onlyMethods(['findByUrlAndSiteKey'])
             ->setConstructorArgs([$configs, $model])
             ->getMock();
 

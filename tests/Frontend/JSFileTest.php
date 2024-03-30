@@ -32,11 +32,15 @@ class JSFileTest extends \PHPUnit\Framework\TestCase
 
     public function testConstruct()
     {
+        $this->expectNotToPerformAssertions();
+
         $jsfile = new JSFileStub('path/to/file1.js');
     }
 
     public function testConstructMultiFile()
     {
+        $this->expectNotToPerformAssertions();
+
         $jsfile = new JSFileStub([
             'path/to/file1.js',
             'path/to/file2.js',

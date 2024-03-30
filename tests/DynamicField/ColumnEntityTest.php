@@ -38,6 +38,8 @@ class ColumnEntityTest extends TestCase
      */
     public function testColumnEntity()
     {
+        $this->expectNotToPerformAssertions();
+
         $fluent = m::mock('Illuminate\Support\Fluent');
         $fluent->shouldReceive('nullable');
         $fluent->shouldReceive('unsigned');

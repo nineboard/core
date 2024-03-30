@@ -21,6 +21,8 @@ class BasicImporterTest extends \PHPUnit\Framework\TestCase
 
     public function testExec()
     {
+        $this->expectNotToPerformAssertions();
+
         [$frontend, $request, $urlGenerator] = $this->getMocks();
         $instance = new BasicImporter($frontend, $request);
         BasicImporter::setUrlGenerator($urlGenerator);

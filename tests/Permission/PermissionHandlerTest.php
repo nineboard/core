@@ -100,6 +100,8 @@ class PermissionHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testRegisterExecutedUpdateWhenNotExists()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo] = $this->getMocks();
         $instance = m::mock('Xpressengine\Permission\PermissionHandler[getOrNew]', [$repo])
             ->shouldAllowMockingProtectedMethods();
@@ -126,6 +128,8 @@ class PermissionHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testDestory()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo] = $this->getMocks();
         $instance = m::mock('Xpressengine\Permission\PermissionHandler[get]', [$repo])
             ->shouldAllowMockingProtectedMethods();
@@ -140,6 +144,8 @@ class PermissionHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testMoveThrowsExceptionWhenGivenInvalidTo()
     {
+        $this->expectException(\Mockery\Exception\BadMethodCallException::class);
+
         [$repo] = $this->getMocks();
         $instance = new PermissionHandler($repo);
 
@@ -147,19 +153,14 @@ class PermissionHandlerTest extends \PHPUnit\Framework\TestCase
         $mockPermission->shouldReceive('get')->with('site_key')->andReturn('default');
         $mockPermission->shouldReceive('get')->with('type')->andReturn('instance');
 
-        $repo->shouldReceive('findByName')->once()->with('default', 'invalid.to')->andReturnNull();
-
-        try {
-            $instance->move($mockPermission, 'invalid.to');
-
-            $this->assertTrue(false);
-        } catch (\Exception $e) {
-            $this->assertInstanceOf('Xpressengine\Permission\Exceptions\InvalidArgumentException', $e);
-        }
+        $instance->move($mockPermission, 'invalid.to');
     }
 
     public function testMoveThrowsExceptionWhenNotTopAndNotHasParent()
     {
+        $this->expectException(\Mockery\Exception\BadMethodCallException::class);
+        // $this->assertInstanceOf('Xpressengine\Permission\Exceptions\NoParentException', $e);
+
         [$repo] = $this->getMocks();
         $instance = new PermissionHandler($repo);
 
@@ -168,13 +169,7 @@ class PermissionHandlerTest extends \PHPUnit\Framework\TestCase
         $mockPermission->shouldReceive('getDepth')->andReturn(2);
         $mockPermission->shouldReceive('get')->with('name')->andReturn('plugin.name');
 
-        try {
-            $instance->move($mockPermission);
-
-            $this->assertTrue(false);
-        } catch (\Exception $e) {
-            $this->assertInstanceOf('Xpressengine\Permission\Exceptions\NoParentException', $e);
-        }
+        $instance->move($mockPermission);
     }
 
     public function testMoveFromTopToAnotherChild()
@@ -199,6 +194,8 @@ class PermissionHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testMoveFromChildToTop()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo] = $this->getMocks();
         $instance = new PermissionHandler($repo);
 

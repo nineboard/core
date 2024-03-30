@@ -239,6 +239,8 @@ class AbstractTypeTest extends TestCase
      */
     public function testDropByDropTableMethod()
     {
+        $this->expectNotToPerformAssertions();
+
         //        $handler = $this->handler;
         //
         //        $typeInstance = m::mock('Xpressengine\DynamicField\AbstractType', [$handler])
@@ -434,6 +436,8 @@ class AbstractTypeTest extends TestCase
      */
     public function testDelete()
     {
+        $this->expectNotToPerformAssertions();
+
         $handler = $this->handler;
         $registerHandler = $this->registerHandler;
         $typeInstance = new TestType($handler);

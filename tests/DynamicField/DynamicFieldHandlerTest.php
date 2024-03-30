@@ -138,6 +138,8 @@ class DynamicFieldHandlerTest extends TestCase
      */
     public function testCreate()
     {
+        $this->expectNotToPerformAssertions();
+
         $conn = $this->conn;
         $configHandler = $this->configHandler;
         $registerHandler = $this->registerHandler;
@@ -226,6 +228,8 @@ class DynamicFieldHandlerTest extends TestCase
      */
     public function testPut()
     {
+        $this->expectNotToPerformAssertions();
+
         $conn = $this->conn;
         $configHandler = $this->configHandler;
         $registerHandler = $this->registerHandler;
@@ -247,6 +251,8 @@ class DynamicFieldHandlerTest extends TestCase
      */
     public function testDrop()
     {
+        $this->expectNotToPerformAssertions();
+
         $conn = $this->conn;
         $configHandler = $this->configHandler;
         $registerHandler = $this->registerHandler;

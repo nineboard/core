@@ -155,6 +155,8 @@ class InstanceManagerTest extends TestCase
      */
     public function testPut()
     {
+        $this->expectNotToPerformAssertions();
+
         $configHandler = $this->configHandler;
         $configHandler->shouldReceive('put');
 
@@ -173,6 +175,8 @@ class InstanceManagerTest extends TestCase
      */
     public function testRemove()
     {
+        $this->expectNotToPerformAssertions();
+
         $instanceId = 'instance-id';
 
         $configHandler = $this->configHandler;

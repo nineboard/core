@@ -21,6 +21,8 @@ class OpenGraphImporterTest extends \PHPUnit\Framework\TestCase
 
     public function testExec()
     {
+        $this->expectNotToPerformAssertions();
+
         [$frontend, $urlRoot, $urlGenerator] = $this->getMocks();
         $instance = new OpenGraphImporter($frontend, $urlRoot);
         OpenGraphImporter::setUrlGenerator($urlGenerator);

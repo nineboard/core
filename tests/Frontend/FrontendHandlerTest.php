@@ -28,6 +28,8 @@ namespace Xpressengine\Tests\Frontend {
 
         public function testConstruct()
         {
+            $this->expectNotToPerformAssertions();
+
             $frontend = new FrontendHandler();
         }
 
@@ -41,8 +43,6 @@ namespace Xpressengine\Tests\Frontend {
             $reflTags->setAccessible(true);
 
             $this->assertEquals($tags, $reflTags->getValue($frontend));
-
-            return $frontend;
         }
 
         public function testAddTag()
@@ -73,7 +73,6 @@ namespace Xpressengine\Tests\Frontend {
             $reflTags->setAccessible(true);
 
             $this->assertEquals($tags, $reflTags->getValue($frontend));
-
         }
 
         /**
@@ -89,6 +88,8 @@ namespace Xpressengine\Tests\Frontend {
 
         public function testOutput()
         {
+            $this->expectNotToPerformAssertions();
+
             $tags = $this->getTagList();
             $frontend = new FrontendHandler($tags);
 
@@ -97,7 +98,6 @@ namespace Xpressengine\Tests\Frontend {
 
         protected function setUp(): void
         {
-
             parent::setUp();
         }
 

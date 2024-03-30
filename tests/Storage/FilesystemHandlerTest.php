@@ -32,6 +32,8 @@ class FilesystemHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testStore()
     {
+        $this->expectNotToPerformAssertions();
+
         [$filesystem] = $this->getMocks();
         $instance = new FilesystemHandler($filesystem);
 
@@ -48,6 +50,8 @@ class FilesystemHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testDelete()
     {
+        $this->expectNotToPerformAssertions();
+
         [$filesystem] = $this->getMocks();
         $instance = new FilesystemHandler($filesystem);
 

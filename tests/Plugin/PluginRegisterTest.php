@@ -29,6 +29,8 @@ class PluginRegisterTest extends \PHPUnit\Framework\TestCase
 
     public function testAdd()
     {
+        $this->expectNotToPerformAssertions();
+
         $container = $this->makeContainer();
         $container->shouldReceive('set')
             ->with('module/pluginName@component', TestComponent::class)

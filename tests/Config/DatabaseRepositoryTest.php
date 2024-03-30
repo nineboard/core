@@ -164,6 +164,8 @@ class DatabaseRepositoryTest extends TestCase
 
     public function testClearLike()
     {
+        $this->expectNotToPerformAssertions();
+
         [$conn] = $this->getMocks();
 
         $mockConfig = m::mock('Xpressengine\Config\ConfigEntity');
@@ -184,6 +186,8 @@ class DatabaseRepositoryTest extends TestCase
 
     public function testRemove()
     {
+        $this->expectNotToPerformAssertions();
+
         [$conn] = $this->getMocks();
 
         $query = m::mock('Illuminate\Database\Query\Builder');
@@ -207,6 +211,8 @@ class DatabaseRepositoryTest extends TestCase
 
     public function testFoster()
     {
+        $this->expectNotToPerformAssertions();
+
         [$conn] = $this->getMocks();
         $query = m::mock('Illuminate\Database\Query\Builder');
         $instance = new DatabaseRepository($conn);
@@ -239,6 +245,8 @@ class DatabaseRepositoryTest extends TestCase
 
     public function testAffiliate()
     {
+        $this->expectNotToPerformAssertions();
+
         [$conn] = $this->getMocks();
         $query = m::mock('Illuminate\Database\Query\Builder');
         $instance = new DatabaseRepository($conn);

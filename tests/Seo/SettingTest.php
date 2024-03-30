@@ -51,6 +51,8 @@ class SettingTest extends \PHPUnit\Framework\TestCase
 
     public function testSet()
     {
+        $this->expectNotToPerformAssertions();
+
         [$cfg, $storage, $media, $keygen] = $this->getMocks();
         $instance = new Setting($cfg, $storage, $media, $keygen);
 
@@ -106,6 +108,8 @@ class SettingTest extends \PHPUnit\Framework\TestCase
 
     public function testSetSiteImage()
     {
+        $this->expectNotToPerformAssertions();
+
         [$cfg, $storage, $media, $keygen] = $this->getMocks();
         $instance = m::mock(Setting::class, [$cfg, $storage, $media, $keygen])
             ->shouldAllowMockingProtectedMethods()

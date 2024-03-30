@@ -8,10 +8,8 @@
  */
 
 namespace Xpressengine\Support\Exceptions {
-
     /**
      * xe_trans
-     *
      *
      * @return string
      */

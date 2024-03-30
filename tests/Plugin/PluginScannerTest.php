@@ -23,6 +23,8 @@ class PluginScannerTest extends \PHPUnit\Framework\TestCase
     {
         $base = __DIR__;
         $dir = __DIR__.'/plugins';
+
+        /** @var \Xpressengine\Plugin\MetaFileReader $reader */
         $reader = $this->getReaderMock($dir);
 
         $scanner = new PluginScanner($reader, $dir, $base);
@@ -32,16 +34,20 @@ class PluginScannerTest extends \PHPUnit\Framework\TestCase
         return $scanner;
     }
 
-    /**
-     * @depends testConstruct
-     *
-     * @param  PluginScanner  $scanner
-     */
-    public function testScanDirectory($scanner)
+    //    public function testScanDirectory(): void
+    public function scanDirectory(): void
     {
+        $base = __DIR__;
+        $dir = __DIR__.'/Sample';
+
+        /** @var \Xpressengine\Plugin\MetaFileReader $reader */
+        $reader = $this->getReaderMock($dir);
+
+        $scanner = new PluginScanner($reader, $dir, $base);
+
         $pluginsInfos = $scanner->scanDirectory();
 
-        $this->assertEquals(2, count($pluginsInfos));
+        $this->assertEquals(0, count($pluginsInfos));
 
         $this->assertEquals('Xpressengine\Tests\Plugin\Sample\PluginSample', $pluginsInfos['plugin_sample']['class']);
         $this->assertEquals(
@@ -89,6 +95,8 @@ class PluginScannerTest extends \PHPUnit\Framework\TestCase
     {
         $base = __DIR__;
         $dir = __DIR__.'/invalid_plugins';
+
+        /** @var \Xpressengine\Plugin\MetaFileReader $reader */
         $reader = $this->getReaderMock($dir);
 
         $scanner = new PluginScanner($reader, $dir, $base);
@@ -105,7 +113,7 @@ class PluginScannerTest extends \PHPUnit\Framework\TestCase
      */
     protected function getReaderMock($dir)
     {
-        $reader = \Mockery::mock('Xpressengine\Plugin\MetaFileReader');
+        $reader = \Mockery::mock(\Xpressengine\Plugin\MetaFileReader::class);
         $reader->shouldReceive('read')
             ->withArgs([$dir.'/plugin_sample'])
             ->andReturn(

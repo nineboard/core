@@ -25,7 +25,7 @@ class CacheDecoratorTest extends TestCase
         [$repo, $cache] = $this->getMocks();
         $instance = $this->getMockBuilder(CacheDecorator::class)
             ->setConstructorArgs([$repo, $cache])
-            ->setMethods(['getData'])->getMock();
+            ->onlyMethods(['getData'])->getMock();
 
         $mockItem1 = new \stdClass;
         $mockItem1->name = 'foo';
@@ -53,7 +53,7 @@ class CacheDecoratorTest extends TestCase
         [$repo, $cache] = $this->getMocks();
         $instance = $this->getMockBuilder(CacheDecorator::class)
             ->setConstructorArgs([$repo, $cache])
-            ->setMethods(['getData'])->getMock();
+            ->onlyMethods(['getData'])->getMock();
 
         $mockItem1 = new \stdClass;
         $mockItem1->name = 'foo';
@@ -72,7 +72,7 @@ class CacheDecoratorTest extends TestCase
         [$repo, $cache] = $this->getMocks();
         $instance = $this->getMockBuilder(CacheDecorator::class)
             ->setConstructorArgs([$repo, $cache])
-            ->setMethods(['getData'])->getMock();
+            ->onlyMethods(['getData'])->getMock();
 
         $mockItem1 = m::mock('Xpressengine\Config\ConfigEntity');
         $mockItem1->name = 'foo';

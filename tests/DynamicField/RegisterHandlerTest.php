@@ -64,6 +64,8 @@ class RegisterHandlerTest extends TestCase
      */
     public function testAdd()
     {
+        $this->expectNotToPerformAssertions();
+
         $pluginRegister = $this->pluginRegister;
         $dispatcher = $this->dispatcher;
 

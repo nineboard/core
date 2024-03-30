@@ -53,6 +53,8 @@ class FilePluginCacheTest extends \PHPUnit\Framework\TestCase
 
     public function testSetPluginsToCache()
     {
+        $this->expectNotToPerformAssertions();
+
         $repo = $this->makeRepo();
         $repo->shouldReceive('forever')->withAnyArgs()->once()->andReturnNull();
         $cache = $this->getCache($repo);

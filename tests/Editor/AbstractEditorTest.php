@@ -16,7 +16,7 @@ class AbstractEditorTest extends \PHPUnit\Framework\TestCase
     {
         [$editors, $urls, $gate, $skins, $events, $frontend, $instanceId] = $this->getMocks();
         $instance = $this->getMockBuilder(Dummy::class)
-            ->setMethods(['getTools'])
+            ->onlyMethods(['getTools'])
             ->setConstructorArgs([$editors, $urls, $gate, $skins, $events, $frontend, $instanceId])
             ->getMock();
 
@@ -33,7 +33,7 @@ class AbstractEditorTest extends \PHPUnit\Framework\TestCase
     {
         [$editors, $urls, $gate, $skins, $events, $frontend, $instanceId] = $this->getMocks();
         $instance = $this->getMockBuilder(Dummy::class)
-            ->setMethods(['getActivateToolIds'])
+            ->onlyMethods(['getActivateToolIds'])
             ->setConstructorArgs([$editors, $urls, $gate, $skins, $events, $frontend, $instanceId])
             ->getMock();
 
@@ -55,7 +55,7 @@ class AbstractEditorTest extends \PHPUnit\Framework\TestCase
     {
         [$editors, $urls, $gate, $skins, $events, $frontend, $instanceId] = $this->getMocks();
         $instance = $this->getMockBuilder(Dummy::class)
-            ->setMethods(['loadTools', 'getOptions', 'getContentHtml', 'getEditorScript'])
+            ->onlyMethods(['loadTools', 'getOptions', 'getContentHtml', 'getEditorScript'])
             ->setConstructorArgs([$editors, $urls, $gate, $skins, $events, $frontend, $instanceId])
             ->getMock();
 

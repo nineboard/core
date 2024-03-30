@@ -32,11 +32,17 @@ class CSSFileTest extends \PHPUnit\Framework\TestCase
 
     public function testConstruct()
     {
+        $this->expectNotToPerformAssertions();
+
+        $this->expectNotToPerformAssertions();
+
         $cssfile = new CSSFileStub('path/to/file1.css');
     }
 
     public function testConstructMultiFile()
     {
+        $this->expectNotToPerformAssertions();
+
         $cssfile = new CSSFileStub([
             'path/to/file1.css',
             'path/to/file2.css',

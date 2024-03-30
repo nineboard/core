@@ -35,6 +35,8 @@ class UrlMakerTest extends \PHPUnit\Framework\TestCase
 
     public function testRoute()
     {
+        $this->expectNotToPerformAssertions();
+
         [$urlGenerator, $config] = $this->getMocks();
         $instance = new UrlMaker($urlGenerator, $config);
 

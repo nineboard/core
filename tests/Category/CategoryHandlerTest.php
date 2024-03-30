@@ -129,7 +129,7 @@ class CategoryHandlerTest extends TestCase
         [$cateRepo, $itemRepo] = $this->getMocks();
         $instance = $this->getMockBuilder(CategoryHandler::class)
             ->setConstructorArgs([$cateRepo, $itemRepo])
-            ->setMethods(['linkHierarchy', 'unlinkHierarchy'])
+            ->onlyMethods(['linkHierarchy', 'unlinkHierarchy'])
             ->getMock();
 
         $mockItem = m::mock('Xpressengine\Category\Models\CategoryItem');

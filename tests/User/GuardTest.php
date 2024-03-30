@@ -82,7 +82,7 @@ class GuardTest extends \PHPUnit\Framework\TestCase
         [$session, $provider, $adminAuth, $request] = $this->getMocks();
 
         $mock = $this->getMockBuilder(Guard::class)
-            ->setMethods(['clearUserDataFromStorage'])
+            ->onlyMethods(['clearUserDataFromStorage'])
             ->setConstructorArgs(['xe', $provider, $session, $adminAuth, $request])
             ->getMock();
         $mock->setCookieJar($cookies = m::mock(CookieJar::class));

@@ -44,6 +44,8 @@ class SkinInstanceStoreTest extends \PHPUnit\Framework\TestCase
 
     public function testSetSelectedSkin()
     {
+        $this->expectNotToPerformAssertions();
+
         $key = 'module/board';
 
         $manager = $this->getConfigManager();
@@ -76,6 +78,8 @@ class SkinInstanceStoreTest extends \PHPUnit\Framework\TestCase
 
     public function testSetConfigs()
     {
+        $this->expectNotToPerformAssertions();
+
         $key = 'module/board';
 
         $manager = $this->getConfigManager();

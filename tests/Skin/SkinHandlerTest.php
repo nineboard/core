@@ -146,6 +146,8 @@ class SkinHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testAssign()
     {
+        $this->expectNotToPerformAssertions();
+
         $key = 'module/pluginA@real';
         $instanceId = 'notice';
         $skin = [];

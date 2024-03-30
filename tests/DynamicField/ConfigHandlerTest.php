@@ -39,6 +39,8 @@ class ConfigHandlerTest extends TestCase
      */
     public function testHandler()
     {
+        $this->expectNotToPerformAssertions();
+
         $conn = m::mock('Xpressengine\Database\VirtualConnectionInterface');
         $configManager = m::mock('Xpressengine\Config\ConfigManager');
         $configManager->shouldReceive('get')->once()->andReturn(null);
@@ -102,6 +104,8 @@ class ConfigHandlerTest extends TestCase
      */
     public function testRemove()
     {
+        $this->expectNotToPerformAssertions();
+
         $conn = m::mock('Xpressengine\Database\VirtualConnectionInterface');
         $configManager = m::mock('Xpressengine\Config\ConfigManager');
         $configManager->shouldReceive('remove');

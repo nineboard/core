@@ -48,6 +48,8 @@ class EditorHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testSetInstance()
     {
+        $this->expectNotToPerformAssertions();
+
         [$register, $configs, $container, $storage, $medias] = $this->getMocks();
         $instance = new EditorHandler($register, $configs, $container, $storage, $medias);
 
@@ -76,7 +78,7 @@ class EditorHandlerTest extends \PHPUnit\Framework\TestCase
     {
         [$register, $configs, $container, $storage, $medias] = $this->getMocks();
         $instance = $this->getMockBuilder(EditorHandler::class)
-            ->setMethods(['getEditorId'])
+            ->onlyMethods(['getEditorId'])
             ->setConstructorArgs([$register, $configs, $container, $storage, $medias])
             ->getMock();
 
@@ -101,7 +103,7 @@ class EditorHandlerTest extends \PHPUnit\Framework\TestCase
     {
         [$register, $configs, $container, $storage, $medias] = $this->getMocks();
         $instance = $this->getMockBuilder(EditorHandler::class)
-            ->setMethods(['get'])
+            ->onlyMethods(['get'])
             ->setConstructorArgs([$register, $configs, $container, $storage, $medias])
             ->getMock();
 
@@ -139,7 +141,7 @@ class EditorHandlerTest extends \PHPUnit\Framework\TestCase
     {
         [$register, $configs, $container, $storage, $medias] = $this->getMocks();
         $instance = $this->getMockBuilder(EditorHandler::class)
-            ->setMethods(['getToolAll'])
+            ->onlyMethods(['getToolAll'])
             ->setConstructorArgs([$register, $configs, $container, $storage, $medias])
             ->getMock();
 
@@ -161,7 +163,7 @@ class EditorHandlerTest extends \PHPUnit\Framework\TestCase
     {
         [$register, $configs, $container, $storage, $medias] = $this->getMocks();
         $instance = $this->getMockBuilder(EditorHandler::class)
-            ->setMethods(['get', 'compileTools'])
+            ->onlyMethods(['get', 'compileTools'])
             ->setConstructorArgs([$register, $configs, $container, $storage, $medias])
             ->getMock();
 

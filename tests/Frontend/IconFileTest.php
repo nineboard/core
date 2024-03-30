@@ -26,6 +26,8 @@ class IconFileTest extends \PHPUnit\Framework\TestCase
 
     public function testConstruct()
     {
+        $this->expectNotToPerformAssertions();
+
         $iconFile = new IconFileStub('path/to/file.ico');
 
         return $iconFile;

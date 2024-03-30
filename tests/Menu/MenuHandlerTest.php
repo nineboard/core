@@ -22,14 +22,18 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
     public function testDeleteMenu()
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
+
+        /** @var \Xpressengine\Menu\MenuHandler $instance */
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['deleteMenuTheme'])
+            ->onlyMethods(['deleteMenuTheme'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
+        /** @var stdClass $collection */
         $collection = m::mock('stdClass');
         $collection->shouldReceive('count')->andReturn(0);
 
+        /** @var \Xpressengine\Menu\Models\Menu $mockMenu */
         $mockMenu = m::mock('Xpressengine\Menu\Models\Menu');
         $mockMenu->shouldReceive('hasMacro')->andReturn(false);
         $mockMenu->shouldReceive('getAttribute')->with('items')->andReturn($collection);
@@ -39,13 +43,20 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
         $menus->shouldReceive('delete')->with($mockMenu)->andReturn(true);
 
         $instance->deleteMenu($mockMenu);
+
+        $this->assertTrue(true);
     }
 
     public function testRemoveThrowsExceptionWhenHasItem()
     {
+        $this->expectException(\Xpressengine\Menu\Exceptions\CanNotDeleteMenuEntityHaveChildException::class);
+        // $this->assertInstanceOf('Xpressengine\Menu\Exceptions\CanNotDeleteMenuEntityHaveChildException', $e);
+
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
+
+        /** @var \Xpressengine\Menu\MenuHandler $instance */
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['deleteMenuTheme'])
+            ->onlyMethods(['deleteMenuTheme'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -56,23 +67,20 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
         $mockMenu->shouldReceive('hasMacro')->andReturn(false);
         $mockMenu->shouldReceive('getAttribute')->with('items')->andReturn($collection);
 
-        try {
-            $instance->deleteMenu($mockMenu);
-
-            $this->assertTrue(false);
-        } catch (\Exception $e) {
-            $this->assertInstanceOf('Xpressengine\Menu\Exceptions\CanNotDeleteMenuEntityHaveChildException', $e);
-        }
+        $instance->deleteMenu($mockMenu);
     }
 
     public function testCreateItem()
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
+
+        /** @var \Xpressengine\Menu\MenuHandler $instance */
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['setHierarchy', 'setOrder', 'storeMenuType'])
+            ->onlyMethods(['setHierarchy', 'setOrder', 'storeMenuType'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
+        /** @var \Xpressengine\Menu\Models\Menu $mockMenu */
         $mockMenu = m::mock('Xpressengine\Menu\Models\Menu')->shouldAllowMockingProtectedMethods();
         $mockMenu->shouldReceive('getKey')->andReturn('menuKey');
 
@@ -106,11 +114,14 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
     public function testUpdateItem()
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
+
+        /** @var \Xpressengine\Menu\MenuHandler $instance */
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['updateMenuType'])
+            ->onlyMethods(['updateMenuType'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
+        /** @var \Xpressengine\Menu\Models\MenuItem $mockMenuItem */
         $mockMenuItem = m::mock('Xpressengine\Menu\Models\MenuItem');
         $mockMenuItem->shouldReceive('getParentIdName')->andReturn('parentId');
         $mockMenuItem->shouldReceive('getOriginal')->with('parentId')->andReturn('parent_id');
@@ -120,16 +131,21 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
         $instance->expects($this->once())->method('updateMenuType')->with($mockMenuItem, ['foo' => 'var']);
 
         $instance->updateItem($mockMenuItem, ['title' => 'test title'], ['foo' => 'var']);
+
+        $this->assertTrue(true);
     }
 
     public function testDeleteItem()
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
+
+        /** @var \Xpressengine\Menu\MenuHandler $mockMenuItem */
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['deleteMenuType'])
+            ->onlyMethods(['deleteMenuType'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
+        /** @var \Xpressengine\Menu\Models\MenuItem $mockMenuItem */
         $mockMenuItem = m::mock('Xpressengine\Menu\Models\MenuItem');
         $mockMenuItem->shouldReceive('getDescendantCount')->andReturn(0);
 
@@ -138,27 +154,30 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
         $instance->expects($this->once())->method('deleteMenuType')->with($mockMenuItem);
 
         $instance->deleteItem($mockMenuItem);
+
+        $this->assertTrue(true);
     }
 
     public function testDeleteItemThrowsExceptionWhenHasItem()
     {
+        $this->expectException(\Xpressengine\Menu\Exceptions\CanNotDeleteMenuItemHaveChildException::class);
+
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
+
+        /** @var \Xpressengine\Menu\MenuHandler $mockMenuItem */
         $instance = new MenuHandler($menus, $items, $configs, $modules, $routes);
 
+        /** @var \Xpressengine\Menu\Models\MenuItem $mockMenuItem */
         $mockMenuItem = m::mock('Xpressengine\Menu\Models\MenuItem');
         $mockMenuItem->shouldReceive('getDescendantCount')->andReturn(1);
 
-        try {
-            $instance->deleteItem($mockMenuItem);
-
-            $this->assertTrue(false);
-        } catch (\Exception $e) {
-            $this->assertInstanceOf('Xpressengine\Menu\Exceptions\CanNotDeleteMenuItemHaveChildException', $e);
-        }
+        $instance->deleteItem($mockMenuItem);
     }
 
     public function testSetOrder()
     {
+        $this->expectNotToPerformAssertions();
+
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = new MenuHandler($menus, $items, $configs, $modules, $routes);
 
@@ -185,7 +204,7 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['unlinkHierarchy', 'linkHierarchy'])
+            ->onlyMethods(['unlinkHierarchy', 'linkHierarchy'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -230,7 +249,7 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['menuKeyString'])
+            ->onlyMethods(['menuKeyString'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -245,13 +264,15 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
         ]);
 
         $instance->setMenuTheme($mockMenu, 'theme1', 'theme2');
+
+        $this->assertTrue(true);
     }
 
     public function testGetMenuTheme()
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['menuKeyString'])
+            ->onlyMethods(['menuKeyString'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -271,7 +292,7 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['menuKeyString'])
+            ->onlyMethods(['menuKeyString'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -289,13 +310,15 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
         $configs->shouldReceive('modify')->once()->with($mockConfig);
 
         $instance->updateMenuTheme($mockMenu, 'theme1', 'theme2');
+
+        $this->assertTrue(true);
     }
 
     public function testDeleteMenuTheme()
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['menuKeyString'])
+            ->onlyMethods(['menuKeyString'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -313,7 +336,7 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['menuKeyString'])
+            ->onlyMethods(['menuKeyString'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -327,13 +350,15 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
         ]);
 
         $instance->setMenuItemTheme($mockMenuItem, 'theme1', 'theme2');
+
+        $this->assertTrue(true);
     }
 
     public function testGetMenuItemTheme()
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['menuKeyString'])
+            ->onlyMethods(['menuKeyString'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -352,7 +377,7 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['menuKeyString'])
+            ->onlyMethods(['menuKeyString'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -369,13 +394,15 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
         $configs->shouldReceive('modify')->once()->with($mockConfig);
 
         $instance->updateMenuItemTheme($mockMenuItem, 'theme1', 'theme2');
+
+        $this->assertTrue(true);
     }
 
     public function testDeleteMenuItemTheme()
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['menuKeyString'])
+            ->onlyMethods(['menuKeyString'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -386,13 +413,15 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
         $configs->shouldReceive('removeByName')->once()->with('configMenuItemKey');
 
         $instance->deleteMenuItemTheme($mockMenuItem);
+
+        $this->assertTrue(true);
     }
 
     public function testMoveItemConfig()
     {
         [$menus, $items, $configs, $modules, $routes] = $this->getMocks();
         $instance = $this->getMockBuilder(MenuHandler::class)
-            ->setMethods(['menuKeyString'])
+            ->onlyMethods(['menuKeyString'])
             ->setConstructorArgs([$menus, $items, $configs, $modules,  $routes])
             ->getMock();
 
@@ -404,7 +433,7 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
             [$mockAfter, 'configAfter.Key'],
         ];
 
-        $instance->expects($this->any())->method('menuKeyString')->will($this->returnValueMap($map));
+        $instance->expects($this->any())->method('menuKeyString')->willReturnMap($map);
 
         $mockConfig = m::mock('Xpressengine\Config\ConfigEntity');
 
@@ -412,6 +441,8 @@ class MenuHandlerTest extends \PHPUnit\Framework\TestCase
         $configs->shouldReceive('move')->once()->with($mockConfig, 'configAfter');
 
         $instance->moveItemConfig($mockBefore, $mockAfter);
+
+        $this->assertTrue(true);
     }
 
     private function invokedMethod($object, $methodName, $parameters = [])

@@ -223,6 +223,8 @@ class StorageTest extends \PHPUnit\Framework\TestCase
 
     public function testBind()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo, $handler, $auth, $keygen, $distributor, $temps, $response, $filter] = $this->getMocks();
         $instance = new Storage($repo, $handler, $auth, $keygen, $distributor, $temps, $response, $filter);
 
@@ -245,6 +247,8 @@ class StorageTest extends \PHPUnit\Framework\TestCase
 
     public function testUnBindNotRemovedFileWhenFlagFalse()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo, $handler, $auth, $keygen, $distributor, $temps, $response, $filter] = $this->getMocks();
         $instance = new Storage($repo, $handler, $auth, $keygen, $distributor, $temps, $response, $filter);
 
@@ -271,7 +275,7 @@ class StorageTest extends \PHPUnit\Framework\TestCase
     {
         [$repo, $handler, $auth, $keygen, $distributor, $temps, $response, $filter] = $this->getMocks();
         $instance = $this->getMockBuilder(Storage::class)
-            ->setMethods(['delete'])
+            ->onlyMethods(['delete'])
             ->setConstructorArgs([$repo, $handler, $auth, $keygen, $distributor, $temps, $response, $filter])
             ->getMock();
 

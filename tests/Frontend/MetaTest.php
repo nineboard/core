@@ -26,6 +26,8 @@ class MetaTest extends \PHPUnit\Framework\TestCase
 
     public function testConstruct()
     {
+        $this->expectNotToPerformAssertions();
+
         $meta = new Meta();
     }
 
@@ -66,6 +68,8 @@ class MetaTest extends \PHPUnit\Framework\TestCase
 
     public function testName()
     {
+        $this->expectNotToPerformAssertions();
+
         $meta = new Meta();
         $meta->name('keyword')->content('key, word');
 
@@ -77,6 +81,8 @@ class MetaTest extends \PHPUnit\Framework\TestCase
      */
     public function testContent(Meta $meta)
     {
+        $this->expectNotToPerformAssertions();
+
         $meta->content('key, word');
 
         return $meta;

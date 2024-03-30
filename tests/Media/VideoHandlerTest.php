@@ -37,6 +37,8 @@ class VideoHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testGetPicture()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo, $reader, $temp, $extension, $fromSecond] = $this->getMocks();
         $instance = new VideoHandler($repo, $reader, $temp, $extension, $fromSecond);
 

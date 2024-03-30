@@ -75,10 +75,9 @@ class PluginScanner
      * 플러그인 디렉토리에 있는 모든 플러그인을 스캔하며 플러그인 정보를 수집한다.
      * 만약 특정 플러그인이 주어졌을 경우 주어진 플러그인의 정보만 수집한다.
      *
-     * @param  string  $pluginId  정보를 수집할 플러그인 아이디
-     * @return array
+     * @param  ?string  $pluginId  정보를 수집할 플러그인 아이디
      */
-    public function scanDirectory($pluginId = null)
+    public function scanDirectory(?string $pluginId = null): array
     {
         // scan plugin directory
         $directories = glob($this->pluginDirectory.'/'.($pluginId ?: '*'), GLOB_ONLYDIR);

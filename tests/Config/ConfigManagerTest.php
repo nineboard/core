@@ -374,6 +374,8 @@ class ConfigManagerTest extends TestCase
 
     public function testConveyNotExceptedItemCallClear()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo] = $this->getMocks();
         $instance = new ConfigManager($repo);
 
@@ -396,6 +398,8 @@ class ConfigManagerTest extends TestCase
 
     public function testRemove()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo] = $this->getMocks();
 
         $mockConfig = m::mock('Xpressengine\Config\ConfigEntity');
@@ -547,6 +551,8 @@ class ConfigManagerTest extends TestCase
 
     public function testMoveFromTopToAnotherChild()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo] = $this->getMocks();
         $instance = new ConfigManager($repo);
 
@@ -573,6 +579,8 @@ class ConfigManagerTest extends TestCase
 
     public function testMoveFromChildToTop()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo] = $this->getMocks();
         $instance = new ConfigManager($repo);
 
@@ -594,6 +602,8 @@ class ConfigManagerTest extends TestCase
 
     public function testMoveFromChildToAnotherChild()
     {
+        $this->expectNotToPerformAssertions();
+
         [$repo] = $this->getMocks();
         $instance = new ConfigManager($repo);
 

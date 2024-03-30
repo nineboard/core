@@ -21,6 +21,8 @@ class SeoHandlerTest extends \PHPUnit\Framework\TestCase
 
     public function testImport()
     {
+        $this->expectNotToPerformAssertions();
+
         [$importers, $setting, $translator, $frontend, $presenter] = $this->getMocks();
         $instance = m::mock(SeoHandler::class, [$importers, $setting, $translator, $frontend, $presenter])
             ->shouldAllowMockingProtectedMethods()

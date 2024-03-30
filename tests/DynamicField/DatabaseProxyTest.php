@@ -125,6 +125,8 @@ class DatabaseProxyTest extends TestCase
      */
     public function testSet()
     {
+        $this->expectNotToPerformAssertions();
+
         $handler = $this->handler;
 
         $proxy = m::mock('Xpressengine\DynamicField\DatabaseProxy', [$handler])
@@ -168,6 +170,8 @@ class DatabaseProxyTest extends TestCase
      */
     public function testInsert()
     {
+        $this->expectNotToPerformAssertions();
+
         $handler = $this->handler;
 
         $proxy = m::mock('Xpressengine\DynamicField\DatabaseProxy', [$handler])
@@ -194,6 +198,8 @@ class DatabaseProxyTest extends TestCase
      */
     public function testUpdate()
     {
+        $this->expectNotToPerformAssertions();
+
         $handler = $this->handler;
 
         $proxy = m::mock('Xpressengine\DynamicField\DatabaseProxy', [$handler])
@@ -220,6 +226,8 @@ class DatabaseProxyTest extends TestCase
      */
     public function testDelete()
     {
+        $this->expectNotToPerformAssertions();
+
         $handler = $this->handler;
 
         $proxy = m::mock('Xpressengine\DynamicField\DatabaseProxy', [$handler])

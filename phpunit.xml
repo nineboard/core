@@ -7,6 +7,7 @@
     displayDetailsOnTestsThatTriggerWarnings="true"
     displayDetailsOnIncompleteTests="true"
     displayDetailsOnSkippedTests="true"
+    stopOnFailure="true"
     colors="true">
     <testsuites>
         <testsuite name="default">

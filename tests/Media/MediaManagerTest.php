@@ -83,6 +83,8 @@ class MediaManagerTest extends \PHPUnit\Framework\TestCase
 
     public function testGetHandlerByFile()
     {
+        $this->expectNotToPerformAssertions();
+
         [$storage, $factory, $config] = $this->getMocks();
         $instance = m::mock(MediaManager::class, [$storage, $factory, $config])
             ->shouldAllowMockingProtectedMethods()
@@ -121,6 +123,8 @@ class MediaManagerTest extends \PHPUnit\Framework\TestCase
 
     public function testMake()
     {
+        $this->expectNotToPerformAssertions();
+
         [$storage, $factory, $config] = $this->getMocks();
         $instance = m::mock(MediaManager::class, [$storage, $factory, $config])
             ->shouldAllowMockingProtectedMethods()
@@ -175,6 +179,8 @@ class MediaManagerTest extends \PHPUnit\Framework\TestCase
 
     public function testCreateThumbnails()
     {
+        $this->expectNotToPerformAssertions();
+
         [$storage, $factory, $config] = $this->getMocks();
         $instance = m::mock(MediaManager::class, [$storage, $factory, $config])
             ->shouldAllowMockingProtectedMethods()

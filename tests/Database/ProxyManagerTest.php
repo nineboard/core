@@ -64,6 +64,8 @@ class ProxyManagerTest extends TestCase
      */
     public function testRegister()
     {
+        $this->expectNotToPerformAssertions();
+
         $register = $this->register;
         $proxyManager = ProxyManager::instance($register);
 
