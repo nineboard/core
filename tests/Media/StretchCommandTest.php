@@ -14,7 +14,7 @@ use Xpressengine\Media\Commands\StretchCommand;
 
 class StretchCommandTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

@@ -15,7 +15,7 @@ use Xpressengine\Media\Thumbnailer;
 
 class ThumbnailerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

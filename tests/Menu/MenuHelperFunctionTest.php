@@ -34,10 +34,8 @@ class MenuHelperFunctionTest extends TestCase
 {
     /**
      * tearDown
-     *
-     * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
@@ -57,10 +55,8 @@ class MenuHelperFunctionTest extends TestCase
 
     /**
      * setUp
-     *
-     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
 
     }

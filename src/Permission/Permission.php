@@ -117,9 +117,8 @@ class Permission extends Entity implements IteratorAggregate
      * Set the grant
      *
      * @param  Grant  $grant  grant object
-     * @return void
      */
-    public function setGrant(Grant $grant)
+    public function setGrant(Grant $grant): void
     {
         $this->grant = $grant;
     }
@@ -159,9 +158,8 @@ class Permission extends Entity implements IteratorAggregate
      * Get an item at a given offset.
      *
      * @param  mixed  $offset  array offset
-     * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return isset($this->grant->{$offset}) ? $this->grant->{$offset}
                                             : ($this->parent !== null ? $this->parent[$offset] : null);

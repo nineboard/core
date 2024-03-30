@@ -7,7 +7,7 @@ use Xpressengine\Storage\RoundRobinDistributor;
 
 class RoundRobinDistributorTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

@@ -15,7 +15,7 @@ use Xpressengine\Translation\LangData;
 
 class LangDataTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

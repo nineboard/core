@@ -34,20 +34,16 @@ class DynamicQueryTest extends TestCase
 
     /**
      * tear down
-     *
-     * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
 
     /**
      * set up
-     *
-     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
     }
 

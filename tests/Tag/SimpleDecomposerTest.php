@@ -14,7 +14,7 @@ use Xpressengine\Tag\SimpleDecomposer;
 
 class SimpleDecomposerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

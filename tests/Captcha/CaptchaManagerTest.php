@@ -15,7 +15,7 @@ use Xpressengine\Captcha\CaptchaManager;
 
 class CaptchaManagerTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
@@ -83,22 +83,22 @@ class DummyConfig implements \ArrayAccess
         $this->arr = $arr;
     }
 
-    public function offsetGet($name)
+    public function offsetGet($name): mixed
     {
         return $this->arr[$name];
     }
 
-    public function offsetSet($name, $value)
+    public function offsetSet($name, $value): void
     {
         $this->arr[$name] = $value;
     }
 
-    public function offsetUnset($name)
+    public function offsetUnset($name): void
     {
         unset($this->arr[$name]);
     }
 
-    public function offsetExists($name)
+    public function offsetExists($name): bool
     {
         return isset($this->arr[$name]);
     }

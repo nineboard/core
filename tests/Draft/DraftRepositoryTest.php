@@ -14,7 +14,7 @@ use Xpressengine\Draft\DraftRepository;
 
 class DraftRepositoryTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

@@ -14,7 +14,7 @@ use Xpressengine\Media\Handlers\VideoHandler;
 
 class VideoHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

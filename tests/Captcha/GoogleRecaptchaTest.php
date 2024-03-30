@@ -27,12 +27,12 @@ class GoogleRecaptchaTest extends TestCase
         static::$captcha = null;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         static::setCaptcha();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         static::unsetCaptcha();
         m::close();

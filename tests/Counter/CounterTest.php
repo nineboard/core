@@ -31,10 +31,8 @@ class CounterTest extends TestCase
 
     /**
      * tear down
-     *
-     * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
@@ -44,7 +42,7 @@ class CounterTest extends TestCase
      *
      * @reutrn void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $request = m::mock('\Xpressengine\Http\Request');
 

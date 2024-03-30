@@ -15,7 +15,7 @@ use Xpressengine\Config\Repositories\DatabaseRepository;
 
 class DatabaseRepositoryTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

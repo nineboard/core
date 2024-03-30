@@ -15,7 +15,7 @@ use Xpressengine\Category\CategoryHandler;
 
 class CategoryHandlerTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

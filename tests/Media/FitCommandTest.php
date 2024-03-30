@@ -14,7 +14,7 @@ use Xpressengine\Media\Commands\FitCommand;
 
 class FitCommandTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

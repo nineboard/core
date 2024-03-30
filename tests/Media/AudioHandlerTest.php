@@ -14,7 +14,7 @@ use Xpressengine\Media\Handlers\AudioHandler;
 
 class AudioHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

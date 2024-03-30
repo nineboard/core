@@ -13,7 +13,7 @@ use Xpressengine\Interception\Advisor;
 use Xpressengine\Interception\InterceptionHandler;
 use Xpressengine\Interception\Proxy;
 
-class ProxyTest /*extends \PHPUnit\Framework\TestCase*/
+class ProxyTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var InterceptionHandler

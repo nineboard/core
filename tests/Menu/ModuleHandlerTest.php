@@ -41,10 +41,8 @@ class ModuleHandlerTest extends TestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
@@ -162,10 +160,8 @@ class ModuleHandlerTest extends TestCase
 
     /**
      * setUp
-     *
-     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $registerMock = m::mock('Xpressengine\Plugin\PluginRegister');
 

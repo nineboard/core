@@ -14,7 +14,7 @@ use Xpressengine\Seo\Importers\OpenGraphImporter;
 
 class OpenGraphImporterTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

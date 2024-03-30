@@ -14,7 +14,7 @@ use Xpressengine\Draft\DraftHandler;
 
 class DraftHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

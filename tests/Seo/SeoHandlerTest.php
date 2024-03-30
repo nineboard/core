@@ -14,7 +14,7 @@ use Xpressengine\Seo\SeoHandler;
 
 class SeoHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

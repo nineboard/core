@@ -31,10 +31,8 @@ class ProxyManagerTest extends TestCase
 
     /**
      * tear down
-     *
-     * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         ProxyManager::destruct();
         m::close();
@@ -42,10 +40,8 @@ class ProxyManagerTest extends TestCase
 
     /**
      * set up
-     *
-     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $register = m::mock('Xpressengine\Register\Container');
         $register->shouldReceive('set');

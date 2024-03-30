@@ -15,7 +15,7 @@ use Xpressengine\ToggleMenu\ToggleMenuHandler;
 
 class ToggleMenuHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

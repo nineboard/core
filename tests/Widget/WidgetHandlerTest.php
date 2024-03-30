@@ -123,10 +123,8 @@ namespace Xpressengine\Tests\Widget {
 
         /**
          * tearDown
-         *
-         * @return void
          */
-        public function tearDown()
+        public function tearDown(): void
         {
             m::close();
         }
@@ -351,10 +349,8 @@ namespace Xpressengine\Tests\Widget {
 
         /**
          * setUp
-         *
-         * @return void
          */
-        public function setUp()
+        public function setUp(): void
         {
             $registerMock = m::mock('Xpressengine\Plugin\PluginRegister');
             $guardMock = m::mock('Xpressengine\User\GuardInterface');

@@ -14,7 +14,7 @@ use Xpressengine\Seo\Importers\BasicImporter;
 
 class BasicImporterTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

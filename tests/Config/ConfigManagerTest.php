@@ -15,7 +15,7 @@ use Xpressengine\Config\ConfigManager;
 
 class ConfigManagerTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

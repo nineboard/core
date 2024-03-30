@@ -14,7 +14,7 @@ use Xpressengine\Permission\Policy;
 
 class PolicyTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

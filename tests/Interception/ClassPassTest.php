@@ -15,7 +15,7 @@ class ClassPassTest extends \PHPUnit\Framework\TestCase
 {
     const CODE = 'namespace Xpressengine\\Interception\\Proxy;  class Proxy{ use ProxyTrait; }';
 
-    public function setup()
+    public function setUp(): void
     {
         $this->pass = new ClassPass();
     }

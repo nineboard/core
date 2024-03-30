@@ -16,7 +16,7 @@ use Xpressengine\User\UserProvider;
 
 class UserProviderTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

@@ -18,12 +18,12 @@ class MediaManagerTest extends \PHPUnit\Framework\TestCase
 {
     private $handler;
 
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

@@ -32,10 +32,8 @@ class RouteCollectionTest extends TestCase
 
     /**
      * tearDown
-     *
-     * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

@@ -14,7 +14,7 @@ use Xpressengine\Media\Handlers\ImageHandler;
 
 class ImageHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

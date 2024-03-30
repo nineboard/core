@@ -14,7 +14,7 @@ use Xpressengine\Media\Commands\SpillCommand;
 
 class SpillCommandTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

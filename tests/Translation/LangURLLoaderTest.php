@@ -15,7 +15,7 @@ use Xpressengine\Translation\Loaders\LangURLLoader;
 
 class LangURLLoaderTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

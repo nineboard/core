@@ -26,10 +26,8 @@ class ConfigHandlerTest extends TestCase
 {
     /**
      * tear down
-     *
-     * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

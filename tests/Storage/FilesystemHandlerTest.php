@@ -7,7 +7,7 @@ use Xpressengine\Storage\FilesystemHandler;
 
 class FilesystemHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

@@ -7,7 +7,7 @@ use Xpressengine\Storage\Storage;
 
 class StorageTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

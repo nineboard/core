@@ -15,7 +15,7 @@ use Xpressengine\Translation\Loaders\LangFileLoader;
 
 class LangFileLoaderTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

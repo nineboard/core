@@ -7,7 +7,7 @@ use Xpressengine\Storage\UrlMaker;
 
 class UrlMakerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

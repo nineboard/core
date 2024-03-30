@@ -15,7 +15,7 @@ use Xpressengine\Tag\TagHandler;
 
 class TagHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

@@ -14,7 +14,7 @@ use Xpressengine\Media\Commands\CropCommand;
 
 class CropCommandTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

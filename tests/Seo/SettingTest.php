@@ -14,7 +14,7 @@ use Xpressengine\Seo\Setting;
 
 class SettingTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }

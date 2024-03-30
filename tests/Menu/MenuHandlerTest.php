@@ -14,7 +14,7 @@ use Xpressengine\Menu\MenuHandler;
 
 class MenuHandlerTest extends \PHPUnit\Framework\TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
