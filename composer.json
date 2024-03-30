@@ -1,0 +1,60 @@
+{
+    "name": "nineboard/core",
+    "description": "This core has been based on Board",
+    "type": "library",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Sam Lee",
+            "email": "cable8mm@gmail.com"
+        },
+        {
+            "name": "XE Developers",
+            "email": "developers@xpressengine.com",
+            "homepage": "http://xpressengine.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "ezyang/htmlpurifier": "^4.17",
+        "google/recaptcha": "^1.0",
+        "intervention/image": "^3.5",
+        "james-heinrich/getid3": "^1.9",
+        "laravel/helpers": "^1.7",
+        "php-ffmpeg/php-ffmpeg": "^1.2"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0|^7.0|^8.0",
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit": "^9.0|^10.0|^11.0",
+        "symfony/cache": "^6.0|^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xpressengine\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Xpressengine\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "test": "./vendor/bin/phpunit tests",
+        "testpack": "vendor/bin/testbench package:test",
+        "testgen": "./vendor/bin/phpunit --testsuite Generator",
+        "lint": "./vendor/bin/pint",
+        "inspect": "./vendor/bin/pint --test",
+        "apidoc": "rm -rf build; rm -rf cache; doctum.phar update doctum.php --output-format=github --no-ansi --no-progress -v;",
+        "opendoc": "open build/index.html"
+    }
+}
