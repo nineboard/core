@@ -10,11 +10,14 @@
     stopOnFailure="true"
     colors="true">
     <testsuites>
-        <testsuite name="default">
-            <directory suffix="Test.php">tests</directory>
-            <exclude>tests/Plugin/</exclude>
-            <exclude>tests/UIObject/</exclude>
+
+        <testsuite name="Unit">
+            <directory suffix="Test.php">tests/Unit</directory>
         </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">tests/Feature</directory>
+        </testsuite>
+
     </testsuites>
 
     <source>
