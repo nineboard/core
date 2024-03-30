@@ -12,7 +12,6 @@ namespace Xpressengine\Tests\Plugin;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Mockery;
-use Xpressengine\Plugin\PluginCollection;
 use Xpressengine\Plugin\PluginHandler;
 use Xpressengine\Plugin\PluginRegister;
 
@@ -180,7 +179,7 @@ class PluginHandlerTest extends \PHPUnit\Framework\TestCase
     /**
      * makeCollection
      *
-     * @return PluginCollection
+     * @return LegacyMockInterface&MockInterface&TMock
      */
     private function makeRepository()
     {

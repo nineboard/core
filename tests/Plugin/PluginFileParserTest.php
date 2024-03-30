@@ -11,7 +11,7 @@ namespace Xpressengine\Tests\Plugin;
 
 use Xpressengine\Plugin\PluginFileParser;
 
-class PluginFileParserTest /*extends \PHPUnit\Framework\TestCase*/
+class PluginFileParserTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var PluginFileParser

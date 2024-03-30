@@ -11,7 +11,7 @@ namespace Xpressengine\Tests\Plugin\Sample;
 
 use Xpressengine\Plugin\AbstractPlugin;
 
-class PluginSample2 extends AbstractPlugin
+class PluginSample3 extends AbstractPlugin
 {
     /**
      * @return bool

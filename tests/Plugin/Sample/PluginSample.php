@@ -9,7 +9,7 @@
 
 namespace Xpressengine\Tests\Plugin\Sample;
 
-use Route;
+use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Xpressengine\Plugin\AbstractPlugin;
 
@@ -101,7 +101,7 @@ class PluginSample extends AbstractPlugin
 
             Route::get('{bid}/{act?}', function ($bid, $act = null) {
 
-                $act = $act ?: \Input::get('act', 'list');
+                $act = $act ?: Input::get('act', 'list');
                 $board = Board::getInstance();
                 $method = 'get'.studly_case($act);
                 if (method_exists($board, $method)) {
